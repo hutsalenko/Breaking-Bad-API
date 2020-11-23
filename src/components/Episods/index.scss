@@ -1,0 +1,14 @@
+.episod-list {
+  width: 70%;
+  height: 40rem;
+  overflow-y: scroll;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  border: 1px solid black;
+
+  div {
+    font-size: 2rem;
+  }
+}

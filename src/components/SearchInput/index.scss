@@ -1,0 +1,19 @@
+.search-input {
+  margin: 2rem 0;
+  width: 40rem;
+  height: 5rem;
+  font-size: 3rem;
+  text-align: center;
+  border-radius: 1rem;
+  outline: none;
+
+  &:focus {
+    box-shadow: 0 0 10px 3px #11fd44;
+  }
+}
+
+.inactive {
+  &:focus {
+    box-shadow: 0 0 10px 3px red;
+  }
+}
