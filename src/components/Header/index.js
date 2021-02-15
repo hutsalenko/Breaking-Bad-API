@@ -4,7 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 import "./index.scss";
 import logo from "../../bblogo.png";
 
-const Header = () => {
+export const Header = () => {
   return (
     <div className="header__container">
       <Link to="/">
@@ -20,4 +20,3 @@ const Header = () => {
     </div>
   );
 };
-export default Header;

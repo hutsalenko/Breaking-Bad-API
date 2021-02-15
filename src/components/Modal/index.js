@@ -2,7 +2,7 @@ import React from "react";
 
 import "./index.scss";
 
-const Modal = ({ check, userInfo }) => {
+export const Modal = ({ check, userInfo }) => {
   return (
     <>
       <div className="modal-overlay">
@@ -32,4 +32,3 @@ const Modal = ({ check, userInfo }) => {
   );
 };
 
-export default Modal;

@@ -1,25 +1,16 @@
 import React from "react";
-import Card from "../Card";
+import { Card } from "../Card";
 
 import "./index.scss";
 
-const Item = ({ persons, click, choose }) => {
+export const ItemList = ({ persons, click, choose }) => {
   return (
     <div className="card-list">
-      {persons.map((user, i) => {
+      {persons.map((user) => {
         return (
-          <Card
-            key={persons[i].char_id}
-            name={persons[i].name}
-            img={persons[i].img}
-            check={click}
-            all={persons[i]}
-            choose={choose}
-          />
+          <Card key={user.char_id} name={user.name} img={user.img} check={click} all={user} choose={choose} />
         );
       })}
     </div>
   );
 };
-
-export default Item;

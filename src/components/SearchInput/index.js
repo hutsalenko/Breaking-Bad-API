@@ -1,14 +1,22 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
+import classNames from "classnames";
 
 import "./index.scss";
 
-const Search = ({ search, length }) => {
-  let notActiveInput = "search-input";
+export const Search = ({ search, length }) => {
+  const textInput = useRef();
 
-  if (!length) {
-    notActiveInput += " inactive";
-  }
-  return <input type="search" placeholder="search people" onChange={search} className={notActiveInput} />;
+  useEffect(() => {
+    textInput.current.focus();
+  }, []);
+
+  return (
+    <input
+      ref={textInput}
+      type="search"
+      placeholder="search people"
+      onChange={search}
+      className={classNames("search-input", { inactive: !length })}
+    />
+  );
 };
-
-export default Search;

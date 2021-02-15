@@ -1,119 +1,99 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import axios from "axios";
 
-import Search from "./components/SearchInput";
-import ItemList from "./components/ItemList";
-import Header from "./components/Header";
-import Home from "./components/Home";
-import Episods from "./components/Episods";
-import Error from "./components/Error";
+import { Search } from "./components/SearchInput";
+import { ItemList } from "./components/ItemList";
+import { Header } from "./components/Header";
+import { Home } from "./components/Home";
+import { Episods } from "./components/Episods";
+import { Error } from "./components/Error";
+import { Spinner } from "./components/Spinner";
 
 import "./App.scss";
-import Modal from "./components/Modal";
+import { Modal } from "./components/Modal";
 
-class App extends Component {
-  state = {
-    person: [],
-    episods: [],
-    randomPerson: [],
-    onePerson: {},
-    searchFiled: "",
-    isActive: null,
-  };
+const api = axios.create({
+  baseURL: "https://www.breakingbadapi.com",
+});
 
-  componentDidMount() {
-    this.getPerson();
-    this.getEpisods();
-    this.getRandomPerson();
-  }
+export const App = () => {
+  const [person, setPerson] = useState([]);
+  const [episods, setEpisods] = useState([]);
+  const [randomPerson, setRandomPerson] = useState({});
+  const [onePerson, setOnePerson] = useState({});
+  const [searchFiled, setSearchFiled] = useState("");
+  const [isActive, setIsActive] = useState(null);
+  const [isShow, setIsShow] = useState(false);
 
-  getPerson = () => {
-    fetch(`https://www.breakingbadapi.com/api/characters`)
-      .then((response) => response.json())
-      .then((res) => {
-        this.setState({ person: res });
-      });
-  };
+  useEffect(() => {
+    getPerson();
+    getEpisods();
+    getRandomPerson();
+  }, []);
 
-  getEpisods = () => {
-    fetch(`https://www.breakingbadapi.com/api/episodes`)
-      .then((response) => response.json())
-      .then((res) => {
-        this.setState({ episods: res });
-      });
-  };
-
-  getRandomPerson = () => {
-    fetch(`https://www.breakingbadapi.com/api/character/random`)
-      .then((response) => response.json())
-      .then((res) => {
-        this.setState({ randomPerson: res });
-      });
-  };
-
-  onChangeInput = (e) => {
-    this.setState({ searchFiled: e.target.value });
-  };
-
-  onHandleCheck = () => {
-    this.setState({ isActive: !this.state.isActive });
-  };
-
-  addPersonToModal = (user) => {
-    this.setState({ onePerson: user });
-  };
-
-  render() {
-    const filterPerson = this.state.person.filter((persons) => {
-      return persons.name.toLowerCase().includes(this.state.searchFiled.toLowerCase());
+  const getPerson = () => {
+    setIsShow(true);
+    api.get(`/api/characters`).then((res) => {
+      setPerson(res.data);
+      setIsShow(false);
     });
-    return (
-      <BrowserRouter>
-        <div className="container">
-          <Header />
-          <Switch>
-            <Route
-              path="/"
-              exact
-              render={() =>
-                this.state.randomPerson.length && (
-                  <Home person={this.state.randomPerson} changePerson={this.getRandomPerson} />
-                )
-              }
-            />
-            <Route
-              path="/characters"
-              render={() => (
-                <>
-                  <Search search={this.onChangeInput} length={filterPerson.length} />
-                  <ItemList
-                    persons={filterPerson}
-                    click={this.onHandleCheck}
-                    choose={this.addPersonToModal}
-                  />
-                </>
-              )}
-            />
+  };
 
-            <Route
-              path="/episods"
-              render={() =>
-                this.state.episods.length && (
-                  <Episods
-                    episodInfo={this.state.episods}
-                    check={this.handleCheck}
-                    page={this.state.checkPage}
-                  />
-                )
-              }
-            />
-            <Route component={Error} />
-          </Switch>
-          {this.state.isActive && <Modal check={this.onHandleCheck} userInfo={this.state.onePerson} />}
-        </div>
-      </BrowserRouter>
-    );
-  }
-}
+  const getEpisods = () => {
+    setIsShow(true);
+    api.get(`/api/episodes`).then((res) => {
+      setEpisods(res.data);
+      setIsShow(false);
+    });
+  };
 
-export default App;
+  const getRandomPerson = () => {
+    setIsShow(true);
+    api.get(`/api/character/random`).then((res) => {
+      setRandomPerson(res.data);
+      setIsShow(false);
+    });
+  };
+
+  const onChangeInput = (e) => setSearchFiled(e.target.value);
+
+  const onHandleCheck = () => setIsActive(!isActive);
+
+  const addPersonToModal = (user) => setOnePerson(user);
+
+  const filterPerson = person.filter((persons) => {
+    return persons.name.toLowerCase().includes(searchFiled.toLowerCase());
+  });
+
+  return (
+    <BrowserRouter>
+      <div className="container">
+        <Header />
+        <Switch>
+          <Route
+            path="/"
+            exact
+            render={() =>
+              randomPerson.length && <Home person={randomPerson} changePerson={getRandomPerson} />
+            }
+          />
+          <Route
+            path="/characters"
+            render={() => (
+              <>
+                <Search search={onChangeInput} length={filterPerson.length} />
+                <ItemList persons={filterPerson} click={onHandleCheck} choose={addPersonToModal} />
+              </>
+            )}
+          />
+
+          <Route path="/episods" render={() => episods.length > 0 && <Episods episodInfo={episods} />} />
+          <Route component={Error} />
+        </Switch>
+        {isActive && <Modal check={onHandleCheck} userInfo={onePerson} />}
+        {isShow && <Spinner />}
+      </div>
+    </BrowserRouter>
+  );
+};

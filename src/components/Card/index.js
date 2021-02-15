@@ -2,7 +2,7 @@ import React from "react";
 
 import "./index.scss";
 
-const Card = ({ name, img, check, all, choose }) => {
+export const Card = ({ name, img, check, all, choose }) => {
   return (
     <div className="card-item">
       <img alt="robots" src={img} />
@@ -13,5 +13,3 @@ const Card = ({ name, img, check, all, choose }) => {
     </div>
   );
 };
-export default Card;
-//

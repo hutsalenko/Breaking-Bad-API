@@ -2,7 +2,7 @@ import React from "react";
 
 import "./index.scss";
 
-const Card = ({ air_date, episode, season, series, title }) => {
+export const EpisodCard = ({ air_date, episode, season, series, title }) => {
   return (
     <div className="episod-item">
       <div className="episod-item-season">Season #{season}</div>
@@ -13,4 +13,3 @@ const Card = ({ air_date, episode, season, series, title }) => {
     </div>
   );
 };
-export default Card;

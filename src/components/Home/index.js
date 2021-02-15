@@ -2,13 +2,12 @@ import React from "react";
 
 import "./index.scss";
 
-const Home = ({ person, changePerson }) => {
+export const Home = ({ person, changePerson }) => {
   const personObj = { ...person }[0];
+
   return (
     <div className="random-container">
-      <button type="button" onClick={changePerson}>
-        Random Person
-      </button>
+      <button onClick={changePerson}>Random Person</button>
       <div className="random-block">
         <img src={personObj.img} alt="users" />
         <div className="random-block-desc">
@@ -29,5 +28,3 @@ const Home = ({ person, changePerson }) => {
     </div>
   );
 };
-
-export default Home;
