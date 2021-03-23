@@ -1,8 +1,13 @@
-import React from "react";
+import React from 'react';
 
-import "./index.scss";
+import { useDispatch } from 'react-redux';
+import { modal } from '../../redux/actions';
 
-export const Modal = ({ check, userInfo }) => {
+import './index.scss';
+
+export const Modal = ({ userInfo }) => {
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="modal-overlay">
@@ -23,7 +28,7 @@ export const Modal = ({ check, userInfo }) => {
             <span className="block-status">Status: {userInfo.status}</span>
           </div>
 
-          <button type="button" onClick={check} className="exit-btn">
+          <button type="button" onClick={() => dispatch(modal())} className="exit-btn">
             X
           </button>
         </div>
@@ -31,4 +36,3 @@ export const Modal = ({ check, userInfo }) => {
     </>
   );
 };
-

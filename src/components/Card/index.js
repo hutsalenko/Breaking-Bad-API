@@ -1,13 +1,18 @@
-import React from "react";
+import React from 'react';
 
-import "./index.scss";
+import { useDispatch } from 'react-redux';
+import { modal } from '../../redux/actions';
 
-export const Card = ({ name, img, check, all, choose }) => {
+import './index.scss';
+
+export const Card = ({ name, img, all, choose }) => {
+  const dispatch = useDispatch();
+
   return (
     <div className="card-item">
       <img alt="robots" src={img} />
       <h2>{name}</h2>
-      <button type="button" onMouseUp={check} onMouseDown={() => choose(all)}>
+      <button type="button" onMouseUp={() => dispatch(modal())} onMouseDown={() => choose(all)}>
         Watch All
       </button>
     </div>
