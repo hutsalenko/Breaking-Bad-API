@@ -73,7 +73,6 @@ export const App = () => {
     <BrowserRouter>
       <div className="container">
         <Header />
-        <div onClick={() => dispatch(modal(10))}>FFFFFFFFFFFF</div>
         <Switch>
           <Route
             path="/"
