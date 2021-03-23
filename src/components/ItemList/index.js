@@ -9,11 +9,13 @@ import './index.scss';
 //     return persons.name.toLowerCase().includes(searchFiled.toLowerCase());
 //   });
 
-export const ItemList = ({ persons, choose }) => {
+export const ItemList = ({ persons, choose, click }) => {
   return (
     <div className="card-list">
       {persons.map((user) => {
-        return <Card key={user.char_id} name={user.name} img={user.img} all={user} choose={choose} />;
+        return (
+          <Card key={user.char_id} name={user.name} img={user.img} all={user} choose={choose} check={click} />
+        );
       })}
     </div>
   );

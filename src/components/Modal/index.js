@@ -6,6 +6,8 @@ import { modal } from '../../redux/actions';
 import './index.scss';
 
 export const Modal = ({ userInfo }) => {
+  // console.log(userInfo);
+
   const dispatch = useDispatch();
 
   return (
@@ -28,7 +30,7 @@ export const Modal = ({ userInfo }) => {
             <span className="block-status">Status: {userInfo.status}</span>
           </div>
 
-          <button type="button" onClick={() => dispatch(modal())} className="exit-btn">
+          <button type="button" onClick={dispatch(modal())} className="exit-btn">
             X
           </button>
         </div>

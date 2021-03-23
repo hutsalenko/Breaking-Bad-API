@@ -1,0 +1,48 @@
+[33mcommit 08fd7eab3b9728581a495d86c30ef7882f2ec691[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Ivan <ivangutsalenko92@gmail.com>
+Date:   Tue Mar 23 15:48:37 2021 +0200
+
+    Added redux-thunk
+
+[33mcommit e2c7e930d272cc8e9689e16a7f7037542e763d37[m
+Author: Ivan <ivangutsalenko92@gmail.com>
+Date:   Tue Mar 9 20:17:23 2021 +0200
+
+    Added Formik
+
+[33mcommit e28d85fd7491a3d14356d736690df303b004176a[m
+Merge: 2a7b138 3fd8a8d
+Author: Ivan <ivangutsalenko92@gmail.com>
+Date:   Mon Feb 15 12:23:07 2021 +0200
+
+    Merge branch 'main' of https://github.com/hutsalenko/Breaking-Bad-API into main
+
+[33mcommit 2a7b138f85921df29b81561fc19440396c8c44cb[m
+Author: Ivan <ivangutsalenko92@gmail.com>
+Date:   Mon Feb 15 12:22:27 2021 +0200
+
+    include hooks
+
+[33mcommit 3fd8a8ddab0e4194364c7cc88183bbf1b00ea6bc[m
+Author: Ivan Hutsalenko <60180054+hutsalenko@users.noreply.github.com>
+Date:   Thu Feb 4 12:51:43 2021 +0200
+
+    Delete index.html
+
+[33mcommit 6412ae2692690a970574639e44a78547e43cc4d4[m
+Author: Ivan Hutsalenko <60180054+hutsalenko@users.noreply.github.com>
+Date:   Thu Feb 4 12:49:58 2021 +0200
+
+    Add files via upload
+
+[33mcommit 6e4798543816d3f4d56fad0757d2a3e5ab7cb5d0[m
+Author: Ivan <ivangutsalenko92@gmail.com>
+Date:   Mon Nov 23 13:22:12 2020 +0200
+
+    upload files
+
+[33mcommit 42f1991b8477a825bba9b049cd178802cc2a4188[m
+Author: Ivan <ivangutsalenko92@gmail.com>
+Date:   Tue Nov 10 20:30:26 2020 +0200
+
+    Initialize project using Create React App

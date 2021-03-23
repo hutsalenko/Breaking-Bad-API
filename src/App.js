@@ -15,7 +15,7 @@ import { Characters } from './components/Characters';
 import './App.scss';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { firstShow, form, personToState } from './redux/actions';
+import { firstShow, form, personToState, modal } from './redux/actions';
 
 const api = axios.create({
   baseURL: 'https://www.breakingbadapi.com',
@@ -26,6 +26,7 @@ export const App = () => {
   const [episods, setEpisods] = useState([]);
   const [onePerson, setOnePerson] = useState({});
   const [searchFiled, setSearchFiled] = useState('');
+  const [isActive, setIsActive] = useState(null);
 
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
@@ -59,17 +60,20 @@ export const App = () => {
   };
 
   const onChangeInput = (e) => setSearchFiled(e.target.value);
-
+  const onHandleCheck = () => setIsActive(!isActive);
   const addPersonToModal = (user) => setOnePerson(user);
 
   const filterPerson = person.filter((persons) => {
     return persons.name.toLowerCase().includes(searchFiled.toLowerCase());
   });
 
+  console.log(state.isModalHidden);
+
   return (
     <BrowserRouter>
       <div className="container">
         <Header />
+        <div onClick={() => dispatch(modal(10))}>FFFFFFFFFFFF</div>
         <Switch>
           <Route
             path="/"
@@ -84,13 +88,14 @@ export const App = () => {
                 length={filterPerson.length}
                 persons={filterPerson}
                 choose={addPersonToModal}
+                click={onHandleCheck}
               />
             )}
           />
           <Route path="/episods" render={() => episods.length > 0 && <Episods episodInfo={episods} />} />
           <Route component={Error} />
         </Switch>
-        {state.isModalHidden.isActive && <Modal userInfo={onePerson} />}
+        {isActive && <Modal userInfo={onePerson} />}
         {state.isFormHidden.showModal && <Spinner />}
         {/* {state.getValue.showForm && <Subscribe />} */}
       </div>

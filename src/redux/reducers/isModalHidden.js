@@ -1,5 +1,5 @@
 const initialValue = {
-  isActive: null,
+  actives: null,
 };
 
 export default function isModalHidden(state = initialValue, action) {
@@ -7,7 +7,7 @@ export default function isModalHidden(state = initialValue, action) {
     case 'SHOW_MODAL':
       return {
         ...state,
-        isActive: !state.isActive,
+        actives: !state.actives,
       };
     default:
       return state;

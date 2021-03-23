@@ -7,9 +7,9 @@ import setSearchFiled from './reducers/setSearchFiled';
 import getPerson from './reducers/getPerson';
 
 export default combineReducers({
+  getPerson,
   getValue,
   isFormHidden,
   isModalHidden,
   setSearchFiled,
-  getPerson,
 });
