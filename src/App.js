@@ -2,20 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
+import { Search } from './components/SearchInput';
+import { ItemList } from './components/ItemList';
 import { Header } from './components/Header';
 import { Home } from './components/Home';
 import { Episods } from './components/Episods';
 import { Error } from './components/Error';
 import { Spinner } from './components/Spinner';
 import { Subscribe } from './components/Subscribe';
-import { Modal } from './components/Modal';
-
 import { Characters } from './components/Characters';
 
 import './App.scss';
-
-import { useSelector, useDispatch } from 'react-redux';
-import { firstShow, form, personToState, modal } from './redux/actions';
+import { Modal } from './components/Modal';
 
 const api = axios.create({
   baseURL: 'https://www.breakingbadapi.com',
@@ -24,50 +22,61 @@ const api = axios.create({
 export const App = () => {
   const [person, setPerson] = useState([]);
   const [episods, setEpisods] = useState([]);
+  const [randomPerson, setRandomPerson] = useState({});
   const [onePerson, setOnePerson] = useState({});
   const [searchFiled, setSearchFiled] = useState('');
   const [isActive, setIsActive] = useState(null);
-
-  const state = useSelector((state) => state);
-  const dispatch = useDispatch();
+  const [isShow, setIsShow] = useState(false);
+  const [showForm, setShowForm] = useState(false);
 
   useEffect(() => {
     getPerson();
     getEpisods();
-
-    dispatch(personToState());
+    getRandomPerson();
   }, []);
 
   useEffect(() => {
-    let timer = setTimeout(() => dispatch(firstShow()), 3000);
+    let timer = setTimeout(() => setShowForm(true), 1000);
     return () => clearTimeout(timer);
-  }, [dispatch]);
+  }, []);
 
   const getPerson = () => {
-    dispatch(form(true));
+    setIsShow(true);
     api.get(`/api/characters`).then((res) => {
       setPerson(res.data);
-      dispatch(form(false));
+      setIsShow(false);
     });
   };
 
   const getEpisods = () => {
-    dispatch(form(true));
+    setIsShow(true);
     api.get(`/api/episodes`).then((res) => {
       setEpisods(res.data);
-      dispatch(form(false));
+      setIsShow(false);
+    });
+  };
+
+  const getRandomPerson = () => {
+    setIsShow(true);
+    api.get(`/api/character/random`).then((res) => {
+      setRandomPerson(res.data);
+      setIsShow(false);
     });
   };
 
   const onChangeInput = (e) => setSearchFiled(e.target.value);
+
   const onHandleCheck = () => setIsActive(!isActive);
+
   const addPersonToModal = (user) => setOnePerson(user);
+
+  const closeSubscribeWindow = () => {
+    setShowForm(!showForm);
+  };
 
   const filterPerson = person.filter((persons) => {
     return persons.name.toLowerCase().includes(searchFiled.toLowerCase());
   });
-
-  console.log(state.isModalHidden);
 
   return (
     <BrowserRouter>
@@ -77,7 +86,9 @@ export const App = () => {
           <Route
             path="/"
             exact
-            render={() => (Object.keys(state.getPerson.person).length ? <Home /> : <Spinner />)}
+            render={() =>
+              randomPerson.length && <Home person={randomPerson} changePerson={getRandomPerson} />
+            }
           />
           <Route
             path="/characters"
@@ -86,17 +97,17 @@ export const App = () => {
                 search={onChangeInput}
                 length={filterPerson.length}
                 persons={filterPerson}
-                choose={addPersonToModal}
                 click={onHandleCheck}
+                choose={addPersonToModal}
               />
             )}
           />
           <Route path="/episods" render={() => episods.length > 0 && <Episods episodInfo={episods} />} />
           <Route component={Error} />
         </Switch>
-        {isActive && <Modal userInfo={onePerson} />}
-        {state.isFormHidden.showModal && <Spinner />}
-        {/* {state.getValue.showForm && <Subscribe />} */}
+        {isActive && <Modal check={onHandleCheck} userInfo={onePerson} />}
+        {isShow && <Spinner />}
+        {showForm && <Subscribe closeForm={closeSubscribeWindow} />}
       </div>
     </BrowserRouter>
   );

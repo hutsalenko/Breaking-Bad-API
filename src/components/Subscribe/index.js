@@ -2,9 +2,6 @@ import React from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 import * as Yup from 'yup';
 
-import { useDispatch } from 'react-redux';
-import { show } from '../../redux/actions';
-
 import './index.scss';
 
 const initialValues = {
@@ -25,9 +22,7 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid email address').required('Required'),
 });
 
-export const Subscribe = () => {
-  const dispatch = useDispatch();
-
+export const Subscribe = ({ closeForm }) => {
   return (
     <div className="form">
       <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={onSubmit}>
@@ -52,7 +47,7 @@ export const Subscribe = () => {
         </Form>
       </Formik>
 
-      <div className="form__exit" onClick={() => dispatch(show())}>
+      <div className="form__exit" onClick={closeForm}>
         <svg
           aria-hidden="true"
           focusable="false"

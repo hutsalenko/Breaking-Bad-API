@@ -1,13 +1,8 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
-import { modal } from '../../redux/actions';
-
 import './index.scss';
 
-export const Card = ({ name, img, all, choose, check }) => {
-  const dispatch = useDispatch();
-
+export const Card = ({ name, img, check, all, choose }) => {
   return (
     <div className="card-item">
       <img alt="robots" src={img} />

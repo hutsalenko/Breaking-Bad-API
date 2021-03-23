@@ -1,8 +1,8 @@
-import React from "react";
-import { Link, NavLink } from "react-router-dom";
+import React from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-import "./index.scss";
-import logo from "../../bblogo.png";
+import './index.scss';
+import logo from '../../bblogo.png';
 
 export const Header = () => {
   return (

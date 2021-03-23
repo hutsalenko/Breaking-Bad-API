@@ -1,12 +1,9 @@
 import React, { useRef, useEffect } from 'react';
 import classNames from 'classnames';
 
-// import { useDispatch, useSelector } from 'react-redux';
-// import { filterUsers } from '../../redux/actions';
-
 import './index.scss';
 
-export const Search = ({ length, search }) => {
+export const Search = ({ search, length }) => {
   const textInput = useRef();
 
   useEffect(() => {
@@ -16,7 +13,7 @@ export const Search = ({ length, search }) => {
   return (
     <input
       ref={textInput}
-      type="text"
+      type="search"
       placeholder="search people"
       onChange={search}
       className={classNames('search-input', { inactive: !length })}

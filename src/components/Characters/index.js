@@ -6,8 +6,8 @@ import { ItemList } from '../ItemList';
 export const Characters = ({ length, persons, choose, search, click }) => {
   return (
     <>
-      <Search length={length} search={search} />
-      <ItemList persons={persons} choose={choose} click={click} />
+      <Search search={search} length={length} />
+      <ItemList persons={persons} click={click} choose={choose} />
     </>
   );
 };
