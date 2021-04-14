@@ -1,29 +1,29 @@
 import React from 'react';
-
+import { useSelector, useDispatch } from 'react-redux';
+import { checkModal } from '../../redux/actions';
 import './index.scss';
 
-export const Modal = ({ check, userInfo }) => {
+export const Modal = () => {
+  const state = useSelector((state) => state.user.user);
+  const dispatch = useDispatch();
+
   return (
     <>
       <div className="modal-overlay">
         <div className="modal-block">
-          <img src={userInfo.img} alt="users" />
+          <img src={state.img} alt="users" />
           <div className="modal-block-desc">
-            <span className="block-name">Name: {userInfo.name}</span>
-            <span className="block-nickname">Nickname: {userInfo.nickname}</span>
+            <span className="block-name">Name: {state.name}</span>
+            <span className="block-nickname">Nickname: {state.nickname}</span>
             <span className="block-occupation">
               Opuccation:
-              <ul>
-                {userInfo.occupation.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
+              <ul>{state.occupation && state.occupation.map((item, i) => <li key={i}>{item}</li>)}</ul>
             </span>
-            <span className="block-portrayed">Portrayed: {userInfo.portrayed}</span>
-            <span className="block-status">Status: {userInfo.status}</span>
+            <span className="block-portrayed">Portrayed: {state.portrayed}</span>
+            <span className="block-status">Status: {state.status}</span>
           </div>
 
-          <button type="button" onClick={check} className="exit-btn">
+          <button type="button" onClick={() => dispatch(checkModal())} className="exit-btn">
             X
           </button>
         </div>

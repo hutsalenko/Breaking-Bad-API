@@ -1,12 +1,13 @@
-import React from "react";
-import { EpisodCard } from "../EpisodCard";
+import React from 'react';
+import { EpisodCard } from '../EpisodCard';
+import { useSelector } from 'react-redux';
+import './index.scss';
 
-import "./index.scss";
-
-export const Episods = ({ episodInfo }) => {
+export const Episods = () => {
+  const state = useSelector((state) => state.episods.episods);
   return (
     <div className="episod-list">
-      {episodInfo.map((user) => {
+      {state.map((user) => {
         return (
           <EpisodCard
             key={user.episode_id}

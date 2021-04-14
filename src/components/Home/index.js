@@ -1,13 +1,16 @@
 import React from 'react';
-
+import { useDispatch, useSelector } from 'react-redux';
+import { receivePerson } from '../../redux/actions';
 import './index.scss';
 
-export const Home = ({ person, changePerson }) => {
-  const personObj = { ...person }[0];
+export const Home = () => {
+  const state = useSelector((state) => state.person.user);
+  const dispatch = useDispatch();
+  const personObj = { ...state }[0];
 
   return (
     <div className="random-container">
-      <button onClick={changePerson}>Random Person</button>
+      <button onClick={() => dispatch(receivePerson())}>Random Person</button>
       <div className="random-block">
         <img src={personObj.img} alt="users" />
         <div className="random-block-desc">

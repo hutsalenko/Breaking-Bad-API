@@ -3,13 +3,11 @@ import { Card } from '../Card';
 
 import './index.scss';
 
-export const ItemList = ({ persons, click, choose }) => {
+export const ItemList = ({ persons }) => {
   return (
     <div className="card-list">
       {persons.map((user) => {
-        return (
-          <Card key={user.char_id} name={user.name} img={user.img} check={click} all={user} choose={choose} />
-        );
+        return <Card key={user.char_id} name={user.name} img={user.img} all={user} />;
       })}
     </div>
   );
