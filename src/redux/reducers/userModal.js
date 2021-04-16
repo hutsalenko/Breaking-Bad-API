@@ -4,7 +4,7 @@ const initialState = {
 
 export default function userModal(state = initialState, action) {
   switch (action.type) {
-    case 'SET_PERSON':
+    case 'SHOW_PERSON':
       return {
         ...state,
         user: action.payload,

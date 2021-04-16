@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { form, receivePerson, receiveEpisods, receiveCharacters } from './redux/actions';
+import { form, getPerson, getEpisods, getCharacters } from './redux/actions';
 import './App.scss';
 
 import { Header } from './components/Header';
@@ -18,9 +18,9 @@ export const App = () => {
   const state = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch(receiveCharacters());
-    dispatch(receiveEpisods());
-    dispatch(receivePerson());
+    dispatch(getPerson());
+    dispatch(getCharacters());
+    dispatch(getEpisods());
   }, [dispatch]);
 
   useEffect(() => {

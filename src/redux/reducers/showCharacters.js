@@ -4,7 +4,7 @@ const initialState = {
 
 export default function showCharacters(state = initialState, action) {
   switch (action.type) {
-    case 'GET_CHARACTERS':
+    case 'SET_CHARACTERS':
       return {
         ...state,
         characters: action.payload,

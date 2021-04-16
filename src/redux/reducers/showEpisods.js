@@ -4,7 +4,7 @@ const initialState = {
 
 export default function showEpisods(state = initialState, action) {
   switch (action.type) {
-    case 'GET_EPISODS':
+    case 'SET_EPISODS':
       return {
         ...state,
         episods: action.payload,

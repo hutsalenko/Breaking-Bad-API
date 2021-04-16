@@ -4,7 +4,7 @@ const initialState = {
 
 export default function showRandomPerson(state = initialState, action) {
   switch (action.type) {
-    case 'GET_PERSON':
+    case 'SET_PERSON':
       return {
         ...state,
         user: action.payload,

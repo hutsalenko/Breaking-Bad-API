@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { receivePerson } from '../../redux/actions';
+import { getPerson } from '../../redux/actions';
 import './index.scss';
 
 export const Home = () => {
@@ -10,7 +10,7 @@ export const Home = () => {
 
   return (
     <div className="random-container">
-      <button onClick={() => dispatch(receivePerson())}>Random Person</button>
+      <button onClick={() => dispatch(getPerson())}>Random Person</button>
       <div className="random-block">
         <img src={personObj.img} alt="users" />
         <div className="random-block-desc">
