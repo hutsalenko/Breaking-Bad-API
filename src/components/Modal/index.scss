@@ -1,88 +1,88 @@
 .modal-overlay {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 98.5vw;
-  height: 100vh;
-  background-color: rgba(128, 128, 128, 0.6);
-  position: fixed;
-  top: 0;
-  z-index: 2;
-
-  .modal-block {
-    max-width: 120rem;
-    width: 100%;
-    height: 90%;
-    background-color: #fff;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    position: relative;
-    border-radius: 2rem;
+    width: 98.5vw;
+    height: 100vh;
+    background-color: rgba(128, 128, 128, 0.6);
+    position: fixed;
+    top: 0;
+    z-index: 2;
 
-    img {
-      max-width: 40rem;
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-    }
+    .modal-block {
+        max-width: 120rem;
+        width: 100%;
+        height: 90%;
+        background-color: #fff;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        position: relative;
+        border-radius: 2rem;
 
-    &-desc {
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-
-      .block-name {
-        font-size: 4rem;
-        font-weight: 500;
-        margin-bottom: 3rem;
-      }
-
-      .block-nickname {
-        font-size: 2rem;
-        font-weight: 500;
-        margin-bottom: 2rem;
-      }
-
-      .block-occupation {
-        font-size: 2rem;
-        font-weight: 500;
-        margin-bottom: 2rem;
-
-        li {
-          margin: 1rem 0;
+        img {
+            max-width: 40rem;
+            width: 100%;
+            height: auto;
+            object-fit: cover;
         }
-      }
 
-      .block-portrayed {
-        font-size: 2rem;
-        font-weight: 500;
-        margin-bottom: 2rem;
-      }
+        &-desc {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
 
-      .block-status {
-        font-size: 2rem;
-        font-weight: 500;
-      }
+            .block-name {
+                font-size: 4rem;
+                font-weight: 500;
+                margin-bottom: 3rem;
+            }
+
+            .block-nickname {
+                font-size: 2rem;
+                font-weight: 500;
+                margin-bottom: 2rem;
+            }
+
+            .block-occupation {
+                font-size: 2rem;
+                font-weight: 500;
+                margin-bottom: 2rem;
+
+                li {
+                    margin: 1rem 0;
+                }
+            }
+
+            .block-portrayed {
+                font-size: 2rem;
+                font-weight: 500;
+                margin-bottom: 2rem;
+            }
+
+            .block-status {
+                font-size: 2rem;
+                font-weight: 500;
+            }
+        }
+
+        .exit-btn {
+            width: 4rem;
+            height: 4rem;
+            position: absolute;
+            top: 1%;
+            right: 1%;
+            background-color: rgb(0, 0, 0);
+            border: 1px solid black;
+            color: #fff;
+            font-size: 2rem;
+            border-radius: 50%;
+            outline: none;
+
+            &:active {
+                box-shadow: 0 0 4px 1px black;
+            }
+        }
     }
-
-    .exit-btn {
-      width: 4rem;
-      height: 4rem;
-      position: absolute;
-      top: 1%;
-      right: 1%;
-      background-color: rgb(0, 0, 0);
-      border: 1px solid black;
-      color: #fff;
-      font-size: 2rem;
-      border-radius: 50%;
-      outline: none;
-
-      &:active {
-        box-shadow: 0 0 4px 1px black;
-      }
-    }
-  }
 }

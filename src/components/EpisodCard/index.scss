@@ -1,31 +1,31 @@
 .episod-item {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 3rem;
-  padding: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+    padding: 1rem;
 
-  &-season {
-    font-size: 2rem;
-    margin-right: 4rem;
-  }
+    &-season {
+        font-size: 2rem;
+        margin-right: 4rem;
+    }
 
-  &-episod {
-    font-size: 2rem;
-    margin-right: 4rem;
-  }
+    &-episod {
+        font-size: 2rem;
+        margin-right: 4rem;
+    }
 
-  &-title {
-    font-size: 2rem;
-    margin-right: 4rem;
-  }
+    &-title {
+        font-size: 2rem;
+        margin-right: 4rem;
+    }
 
-  &-series {
-    font-size: 2rem;
-    margin-right: 4rem;
-  }
+    &-series {
+        font-size: 2rem;
+        margin-right: 4rem;
+    }
 
-  &-date {
-    font-size: 2rem;
-  }
+    &-date {
+        font-size: 2rem;
+    }
 }

@@ -11,13 +11,13 @@ import { rootSaga } from './sagas/root.saga';
 import firebase from 'firebase';
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyBhN-FZvdzyYyCkru0cKQQImX-2Kh4oNXw',
-  authDomain: 'example-project-40a8e.firebaseapp.com',
-  databaseURL: 'https://example-project-40a8e-default-rtdb.firebaseio.com',
-  projectId: 'example-project-40a8e',
-  storageBucket: 'example-project-40a8e.appspot.com',
-  messagingSenderId: '680812479473',
-  appId: '1:680812479473:web:2cfac1bdfd441af723fa50',
+  apiKey: 'AIzaSyDOPfMedOONMQ-PbSiE_1fUvAhqrdqdRVM',
+  authDomain: 'test-project-6080f.firebaseapp.com',
+  projectId: 'test-project-6080f',
+  storageBucket: 'test-project-6080f.appspot.com',
+  messagingSenderId: '593571234663',
+  appId: '1:593571234663:web:7ea532b62327742264a5c2',
+  measurementId: 'G-262Z26NE0X',
 };
 
 firebase.initializeApp(firebaseConfig);

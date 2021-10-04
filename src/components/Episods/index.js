@@ -1,35 +1,44 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { EpisodCard } from '../EpisodCard';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { getEpisods } from '../../redux/actions';
 import './index.scss';
 
-export const Episods = () => {
-  const state = useSelector((state) => state.episods.episods);
-  const [episodsQuantity, setEpisodsQuantity] = useState(10);
-  const totalEpisods = state.slice(0, episodsQuantity);
+const Episods = () => {
+    const state = useSelector((state) => state.episods.episods);
+    const dispatch = useDispatch();
+    const [episodsQuantity, setEpisodsQuantity] = useState(10);
 
-  const increaseQuantity = () => setEpisodsQuantity((prev) => prev + 5);
+    useEffect(() => {
+        dispatch(getEpisods());
+    }, []);
 
-  return (
-    <>
-      <div className="episod-list">
-        {totalEpisods.map((user) => {
-          return (
-            <EpisodCard
-              key={user.episode_id}
-              air_date={user.air_date}
-              episode={user.episode}
-              season={user.season}
-              series={user.series}
-              title={user.title}
-              characters={user.characters}
-            />
-          );
-        })}
-      </div>
-      <button className="episod-btn" onClick={() => increaseQuantity()}>
-        Read More
-      </button>
-    </>
-  );
+    const totalEpisods = state.slice(0, episodsQuantity);
+
+    const increaseQuantity = () => setEpisodsQuantity((prev) => prev + 5);
+
+    return (
+        <>
+            <div className="episod-list">
+                {totalEpisods.map((user) => {
+                    return (
+                        <EpisodCard
+                            key={user.episode_id}
+                            air_date={user.air_date}
+                            episode={user.episode}
+                            season={user.season}
+                            series={user.series}
+                            title={user.title}
+                            characters={user.characters}
+                        />
+                    );
+                })}
+            </div>
+            <button className="episod-btn" onClick={() => increaseQuantity()}>
+                Read More
+            </button>
+        </>
+    );
 };
+
+export default Episods;

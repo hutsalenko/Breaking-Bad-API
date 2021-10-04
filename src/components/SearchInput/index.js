@@ -5,20 +5,20 @@ import { input } from '../../redux/actions';
 import './index.scss';
 
 export const Search = ({ length }) => {
-  const dispatch = useDispatch();
-  const textInput = useRef();
+    const dispatch = useDispatch();
+    const textInput = useRef();
 
-  useEffect(() => {
-    textInput.current.focus();
-  }, []);
+    useEffect(() => {
+        textInput.current.focus();
+    }, []);
 
-  return (
-    <input
-      ref={textInput}
-      type="search"
-      placeholder="search people"
-      onInput={(e) => dispatch(input(e.target.value))}
-      className={classNames('search-input', { inactive: !length })}
-    />
-  );
+    return (
+        <input
+            ref={textInput}
+            type="search"
+            placeholder="search people"
+            onInput={(e) => dispatch(input(e.target.value))}
+            className={classNames('search-input', { inactive: !length })}
+        />
+    );
 };

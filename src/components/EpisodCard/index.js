@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import "./index.scss";
+import './index.scss';
 
 export const EpisodCard = ({ air_date, episode, season, series, title }) => {
-  return (
-    <div className="episod-item">
-      <div className="episod-item-season">Season #{season}</div>
-      <div className="episod-item-episod">Episode #{episode}</div>
-      <h2 className="episod-item-title">Title: {title}</h2>
-      <div className="episod-item-series">Series: {series}</div>
-      <div className="episod-item-date">Date: {air_date.split("-")[2]}</div>
-    </div>
-  );
+    return (
+        <div className="episod-item">
+            <div className="episod-item-season">Season #{season}</div>
+            <div className="episod-item-episod">Episode #{episode}</div>
+            <h2 className="episod-item-title">Title: {title}</h2>
+            <div className="episod-item-series">Series: {series}</div>
+            <div className="episod-item-date">Date: {air_date.split('-')[2]}</div>
+        </div>
+    );
 };
