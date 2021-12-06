@@ -11,7 +11,7 @@ export const Header = () => {
                 <img src={logo} alt="site-logo" className="header__container-logo" />
             </Link>
             <div className="header__container-menu">
-                <NavLink to="/" exact>
+                <NavLink to="/">
                     Home
                 </NavLink>
                 <NavLink to="/characters">Characters</NavLink>

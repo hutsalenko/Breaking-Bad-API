@@ -1,5 +1,5 @@
 import React, { useEffect, Suspense, lazy } from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { form, getPerson } from './redux/actions';
 import './App.scss';
@@ -30,12 +30,12 @@ export const App = () => {
             <Suspense fallback={<div>Loading...</div>}>
                 <div className="container">
                     <Header />
-                    <Switch>
-                        <Route path="/" exact component={state.person.user.length > 0 && Home} />
-                        <Route path="/characters" component={Characters} />
-                        <Route path="/episods" component={Episods} />
-                        <Route path="*" component={Error} />
-                    </Switch>
+                    <Routes>
+                        <Route path="/" element={state.person.user.length > 0 && <Home />} />
+                        <Route path="/characters" element={<Characters />} />
+                        <Route path="/episods" element={<Episods />} />
+                        <Route path="*" element={<Error />} />
+                    </Routes>
                     {state.modal.value && <Modal />}
                     {state.spinner.value && <Spinner />}
                     {/* {state.form.value && <Subscribe />} */}
